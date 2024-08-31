@@ -15,6 +15,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function CreateGroups() {
+  // const url = "http://localhost:8080";
+  const url = "https://connect-backend-sugb.onrender.com";
   const lightTheme = useSelector((state) => state.themeKey);
   const userData = JSON.parse(localStorage.getItem("userData"));
   // console.log("Data from LocalStorage : ", userData);
@@ -45,7 +47,7 @@ function CreateGroups() {
     };
 
     axios.post(
-      "http://localhost:8080/chat/createGroup",
+      `${url}/chat/createGroup`,
       {
         name: groupName,
         users: '["647d94aea97e40a17278c7e5","647d999e4c3dd7ca9a2e6543"]',

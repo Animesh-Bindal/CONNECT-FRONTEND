@@ -11,7 +11,9 @@ import axios from "axios";
 import { myContext } from "./MainContainer";
 import { io } from "socket.io-client";
 
-const ENDPOINT = "http://localhost:8080";
+// const ENDPOINT = "http://localhost:8080";
+const ENDPOINT = "https://connect-backend-sugb.onrender.com/";
+const url = "https://connect-backend-sugb.onrender.com";
 
 function ChatArea() {
   const lightTheme = useSelector((state) => state.themeKey);
@@ -35,7 +37,7 @@ function ChatArea() {
     };
     axios
       .post(
-        "http://localhost:8080/message/",
+        `${url}/message/`,
         {
           content: messageContent,
           chatId: chat_id,
@@ -78,7 +80,7 @@ function ChatArea() {
       },
     };
     axios
-      .get(`http://localhost:8080/message/${chat_id}`, config)
+      .get(`${url}/message/${chat_id}`, config)
       .then(({ data }) => {
         setAllMessages(data);
         setLoaded(true);

@@ -12,6 +12,8 @@ import { refreshSidebarFun } from "../Features/refreshSidebar";
 import { myContext } from "./MainContainer";
 
 function Groups() {
+  // const url = "http://localhost:8080";
+  const url = "https://connect-backend-sugb.onrender.com";
   // const [refresh, setRefresh] = useState(true);
   const { refresh, setRefresh } = useContext(myContext);
 
@@ -36,7 +38,7 @@ function Groups() {
     };
 
     axios
-      .get("http://localhost:8080/chat/fetchGroups", config)
+      .get(`${url}/chat/fetchGroups`, config)
       .then((response) => {
         console.log("Group Data from API ", response.data);
         SetGroups(response.data);

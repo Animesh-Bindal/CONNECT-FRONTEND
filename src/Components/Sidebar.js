@@ -16,6 +16,8 @@ import { refreshSidebarFun } from "../Features/refreshSidebar";
 import { myContext } from "./MainContainer";
 
 function Sidebar() {
+  // const url = "http://localhost:8080";
+  const url = "https://connect-backend-sugb.onrender.com";
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const lightTheme = useSelector((state) => state.themeKey);
@@ -41,7 +43,7 @@ function Sidebar() {
       },
     };
 
-    axios.get("http://localhost:8080/chat/", config).then((response) => {
+    axios.get(`${url}/chat/`, config).then((response) => {
       console.log("Data refresh in sidebar ", response.data);
       setConversations(response.data);
       // dispatch(refreshSidebarFun()); //new 

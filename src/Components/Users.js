@@ -12,6 +12,8 @@ import { refreshSidebarFun } from "../Features/refreshSidebar";
 import { myContext } from "./MainContainer";
 
 function Users() {
+  // const url = "http://localhost:8080";
+  const url = "https://connect-backend-sugb.onrender.com";
   // const [refresh, setRefresh] = useState(true);
   const { refresh, setRefresh } = useContext(myContext);
 
@@ -35,7 +37,7 @@ function Users() {
         Authorization: `Bearer ${userData.data.token}`,
       },
     };
-    axios.get("http://localhost:8080/user/fetchUsers", config).then((data) => {
+    axios.get(`${url}/user/fetchUsers`, config).then((data) => {
       console.log("UData refreshed in Users panel ");
       setUsers(data.data);
       // setRefresh(!refresh);
@@ -90,7 +92,7 @@ function Users() {
                     },
                   };
                   axios.post(
-                    "http://localhost:8080/chat/",
+                    `${url}/chat/`,
                     {
                       userId: user._id,
                     },

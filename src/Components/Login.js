@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import Toaster from "./Toaster";
 
 function Login() {
+  // const url = "http://localhost:8080";
+  const url = "https://connect-backend-sugb.onrender.com";
   const [showlogin, setShowLogin] = useState(false);
   const [data, setData] = useState({ name: "", email: "", password: "" });
   const [loading, setLoading] = useState(false);
@@ -30,7 +32,7 @@ function Login() {
       };
 
       const response = await axios.post(
-        "http://localhost:8080/user/login/", data,  config
+        `${url}/user/login/`, data,  config
       );
       // console.log("Login : ", response);
       localStorage.setItem("userData", JSON.stringify(response));
@@ -58,7 +60,7 @@ function Login() {
       };
 
       const response = await axios.post(
-        "http://localhost:8080/user/register/",  data,  config
+        `${url}/user/register/`,  data,  config
       );
       // console.log(response);
       setSignInStatus({ msg: "Success", key: Math.random() });
